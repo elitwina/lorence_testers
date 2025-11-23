@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הצטרפו לצוות הבודקים שלנו 🚀</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Rubik:wght@400;500;700&display=swap');
+        
+        :root {
+            --primary-color: #b0c4b1;
+            --primary-light: #c5d4c6;
+            --primary-dark: #8fa690;
+            --primary-gradient: linear-gradient(135deg, #b0c4b1 0%, #8fa690 100%);
+            --accent-gradient: linear-gradient(135deg, #c5d4c6 0%, #b0c4b1 100%);
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --text-primary: #e5e5e5;
+            --text-secondary: #a0a0a0;
+            --border-color: rgba(176, 196, 177, 0.2);
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --glow-shadow: 0 0 30px rgba(176, 196, 177, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: var(--bg-dark);
+            min-height: 100vh;
+            color: var(--text-primary);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background elements */
+        .bg-decoration {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(176, 196, 177, 0.1), transparent);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+        
+        .bg-decoration:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+        
+        .bg-decoration:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: 7s;
+        }
+        
+        .bg-decoration:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            top: 50%;
+            left: -125px;
+            animation-delay: 14s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(30px, -30px) rotate(90deg) scale(1.1); }
+            50% { transform: translate(-20px, 20px) rotate(180deg) scale(0.9); }
+            75% { transform: translate(20px, 30px) rotate(270deg) scale(1.05); }
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .emoji-hero {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+            display: block;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'Heebo', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 10px rgba(176, 196, 177, 0.3));
+        }
+        
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            background: var(--bg-card-hover);
+            box-shadow: var(--card-shadow), var(--glow-shadow);
+            border-color: rgba(176, 196, 177, 0.3);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            opacity: 0.7;
+        }
+        
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.4s; }
+        .card:nth-child(4) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .intro-card {
+            background: linear-gradient(135deg, rgba(176, 196, 177, 0.05), rgba(176, 196, 177, 0.02));
+            text-align: center;
+            padding: 35px;
+            border: 2px solid var(--border-color);
+        }
+        
+        .intro-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+        
+        .intro-card strong {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+        
+        .steps-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateX(-5px);
+        }
+        
+        .step-number {
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-left: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(176, 196, 177, 0.3);
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+        
+        .step-desc {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(176, 196, 177, 0.15), rgba(176, 196, 177, 0.08));
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            color: var(--primary-light);
+            font-weight: 500;
+            border: 1px solid rgba(176, 196, 177, 0.3);
+        }
+        
+        .highlight-box strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(176, 196, 177, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(176, 196, 177, 0.4);
+        }
+        
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .whatsapp-button {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.3);
+            background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+        }
+        
+        .whatsapp-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feedback-section {
+            background: linear-gradient(135deg, rgba(176, 196, 177, 0.08), rgba(176, 196, 177, 0.04));
+            border: 2px dashed rgba(176, 196, 177, 0.4);
+        }
+        
+        .feedback-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feedback-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feedback-list li {
+            padding-right: 25px;
+            margin-bottom: 10px;
+            position: relative;
+            color: var(--text-primary);
+        }
+        
+        .feedback-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .heart {
+            color: var(--primary-color);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 15px 30px;
+            }
+            
+            .whatsapp-button {
+                font-size: 0.9rem;
+                padding: 12px 24px;
+                width: 100%;
+            }
+            
+            .emoji-hero {
+                font-size: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+    
+    <div class="container">
+        <header class="header">
+            <span class="emoji-hero">📱</span>
+            <h1>הצטרפו לצוות הבודקים שלנו!</h1>
+            <p class="subtitle">עזרו לנו לשחרר את האפליקציה לחנויות 🚀</p>
+        </header>
+        
+        <div class="card intro-card">
+            <p>
+                חברים יקרים! אנחנו צריכים את העזרה שלכם 🙏<br>
+                <strong>אם עדיין לא התקנתם את האפליקציה - חובה להתקין אותה.</strong><br>
+                <strong>אם כבר התקנתם - בבקשה הפעילו אותה, הירשמו ודפדפו במסכים.</strong><br>
+                אנחנו צריכים שתבצעו אינטראקציה של 2-3 דקות ביום באפליקציה כדי שגוגל יוכלו לדעת שבאמת בדקנו אותה, ונוכל לשחרר אותה לחנויות!
+            </p>
+        </div>
+        
+        <div class="card">
+            <h2 class="steps-title">
+                <span>🎯</span>
+                מה צריך לעשות?
+            </h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                    <div class="step-title">התקינו את האפליקציה</div>
+                    <div class="step-desc">לחצו על הכפתור למטה והתקינו מה-Play Store (אם עדיין לא התקנתם)</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                    <div class="step-title">הירשמו לאפליקציה</div>
+                    <div class="step-desc">פתחו את האפליקציה והירשמו עם הפרטים שלכם</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                    <div class="step-title">השתמשו באפליקציה מדי יום</div>
+                    <div class="step-desc">דפדפו במסכים השונים, בדקו פונקציות - 2-3 דקות ביום זה כל מה שצריך!</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                    <div class="step-title">המשיכו לבדוק 14 ימים</div>
+                    <div class="step-desc">גוגל דורשת פעילות עקבית למשך שבועיים כדי לאשר את השחרור לחנויות</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <strong>⚡ זכרו:</strong>
+                2-3 דקות ביום של דפדוף במסכים ובדיקת פונקציות - זה כל מה שצריך כדי שנוכל לשחרר את האפליקציה!
+            </div>
+        </div>
+        
+        <a href="https://play.google.com/apps/testing/com.djlic.lorenceclubnew" class="cta-button" target="_blank">
+            <span>להתקנת האפליקציה</span>
+        </a>
+        
+        <div class="card feedback-section">
+            <h3 class="feedback-title">
+                <span>💡</span>
+                נשמח לשמוע מכם!
+            </h3>
+            <p style="margin-bottom: 15px;">אם נתקלתם במשהו, שלחו לנו הודעה קצרה:</p>
+            <ul class="feedback-list">
+                <li>באג שמצאתם</li>
+                <li>משהו לא ברור</li>
+                <li>פונקציה שלא עובדת</li>
+                <li>רעיון קטן לשיפור</li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-secondary);">
+                שורה אחת בוואטסאפ זה מספיק 😊
+            </p>
+            <a href="https://wa.me/972522967041?text=היי!%20רציתי%20לשתף%20משוב%20על%20האפליקציה:%20" 
+               class="whatsapp-button" 
+               target="_blank">
+                <span>שלחו פידבק בוואטסאפ</span>
+            </a>
+        </div>
+        
+        <footer class="footer">
+            <p>תודה רבה על העזרה! <span class="heart">❤️</span></p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">ביחד נשחרר את האפליקציה לחנויות! 🎉</p>
+        </footer>
+    </div>
+</body>
+</html>
